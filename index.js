@@ -1,9 +1,10 @@
 const discord = require("discord.js");
 const client = new discord.Client();
+require('dotenv').config();
 const fs = require("fs");
 const pre = "-";
 client.commands = new discord.Collection();
-const config = require("./config.json");
+// const config = require("./config.json");
 const cmdfiles = fs
   .readdirSync("./commands/")
   .filter((file) => file.endsWith(".js"));
@@ -27,4 +28,4 @@ client.on("message", (message) => {
     }
   }
 });
-client.login(config.token);
+client.login(process.env.token);
